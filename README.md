@@ -70,3 +70,56 @@ that hot reloading is disabled in production and the footprint is minimal.***
  | -- webpack.config.client.production.js
  
  | -- webpack.config.server.js
+ 
+ ## Setup
+ 
+ **npm init-y**
+ 
+ **npm install @hot-loader/react-dom express mongodb react react-dom react-hot-loader --save**
+ 
+ **npm install @babel/core @babel/preset-env @babel/preset-react babel-loader nodemon webpack webpack-cli webpack-dev-middleware webpack-hot-middleware webpack-node-externals --save-dev**
+ 
+ **package.json**
+ 
+ ```
+ {
+  "name": "mern_setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piyush-cosmo/mern_setup.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piyush-cosmo/mern_setup/issues"
+  },
+  "homepage": "https://github.com/piyush-cosmo/mern_setup#readme",
+  "dependencies": {
+    "@hot-loader/react-dom": "^16.13.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.12.21"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "nodemon": "^2.0.4",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
+```
