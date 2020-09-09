@@ -130,6 +130,8 @@ Before we start coding up the web application, we need to configure **Babel, Web
 
 ###### Babel
 
+**.babelrc**
+
 ```
 {
     "presets": [
