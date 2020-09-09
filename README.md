@@ -123,3 +123,30 @@ that hot reloading is disabled in production and the footprint is minimal.***
   }
 }
 ```
+
+## Configuring Babel, Webpack, and Nodemon
+
+Before we start coding up the web application, we need to configure **Babel, Webpack, and Nodemon** to **compile, bundle, and auto-reload the changes in the code during development**
+
+###### Babel
+
+```
+{
+    "presets": [
+      ["@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "react-hot-loader/babel"
+    ]
+}
+```
+
+In this configuration, we specify that we need **Babel** to transpile the latest JavaScript syntax with support for code in a Node.js environment and also React/JSX code. The 
+**react-hot-loader/babel plugin** is required by the **react-hotloader module** to compile React components.
