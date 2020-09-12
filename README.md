@@ -162,3 +162,5 @@ The config JSON object will differ with values specific to the client- or server
 Alternatively, you can also generate Webpack configurations using the interactive portal **Generate Custom Webpack Configuration** at https://generatewebpackconfig.netlify.com/
 or using the **Webpack-cli's init command** from the command line.
 
+###### Client-side Webpack configuration for development
+
