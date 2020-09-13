@@ -164,3 +164,49 @@ or using the **Webpack-cli's init command** from the command line.
 
 ###### Client-side Webpack configuration for development
 
+**webpack.config.client.js**
+
+```
+const path = require('path')
+const webpack = require('webpack')
+const CURRENT_WORKING_DIR = process.cwd()
+
+const config = {
+    name: "browser",
+    mode: "development",
+    devtool: 'eval-source-map',
+    entry: [
+        'webpack-hot-middleware/client?reload=true',
+        path.join(CURRENT_WORKING_DIR, 'client/main.js')
+    ],
+    output: {
+        path: path.join(CURRENT_WORKING_DIR , '/dist'),
+        filename: 'bundle.js',
+        publicPath: '/dist/'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                use: [
+                    'babel-loader'
+                ]
+            }
+        ]
+    },  
+    plugins: [
+          new webpack.HotModuleReplacementPlugin(),
+          new webpack.NoEmitOnErrorsPlugin()
+    ],
+    resolve: {
+        alias: {
+          'react-dom': '@hot-loader/react-dom'
+        }
+    }
+}
+
+module.exports = config
+```
+
+The highlighted keys and values in the **config** object will determine how Webpack bundles the code and where the bundled code will be placed:
