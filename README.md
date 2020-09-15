@@ -152,3 +152,61 @@ Before we start coding up the web application, we need to configure **Babel, Web
 
 In this configuration, we specify that we need **Babel** to transpile the latest JavaScript syntax with support for code in a Node.js environment and also React/JSX code. The 
 **react-hot-loader/babel plugin** is required by the **react-hotloader module** to compile React components.
+
+###### Webpack
+
+We will have to configure Webpack to **bundle both the client and server code and the client code separately for production**. All three fileswill have the following code structure, starting with imports, then the definition of the config object, and finally the export of the defined config object:
+
+The config JSON object will differ with values specific to the client- or server-side code, and development versus production code. In the following sections, we will highlight the relevant properties in each configuration instance.
+
+Alternatively, you can also generate Webpack configurations using the interactive portal **Generate Custom Webpack Configuration** at https://generatewebpackconfig.netlify.com/
+or using the **Webpack-cli's init command** from the command line.
+
+###### Client-side Webpack configuration for development
+
+**webpack.config.client.js**
+
+```
+const path = require('path')
+const webpack = require('webpack')
+const CURRENT_WORKING_DIR = process.cwd()
+
+const config = {
+    name: "browser",
+    mode: "development",
+    devtool: 'eval-source-map',
+    entry: [
+        'webpack-hot-middleware/client?reload=true',
+        path.join(CURRENT_WORKING_DIR, 'client/main.js')
+    ],
+    output: {
+        path: path.join(CURRENT_WORKING_DIR , '/dist'),
+        filename: 'bundle.js',
+        publicPath: '/dist/'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                use: [
+                    'babel-loader'
+                ]
+            }
+        ]
+    },  
+    plugins: [
+          new webpack.HotModuleReplacementPlugin(),
+          new webpack.NoEmitOnErrorsPlugin()
+    ],
+    resolve: {
+        alias: {
+          'react-dom': '@hot-loader/react-dom'
+        }
+    }
+}
+
+module.exports = config
+```
+
+The highlighted keys and values in the **config** object will determine how Webpack bundles the code and where the bundled code will be placed:
