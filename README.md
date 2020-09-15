@@ -210,3 +210,7 @@ module.exports = config
 ```
 
 The highlighted keys and values in the **config** object will determine how Webpack bundles the code and where the bundled code will be placed:
+
+###### Server-side Weback Configuration
+
+**webpack.config.server.js**
