@@ -218,3 +218,9 @@ The highlighted keys and values in the **config** object will determine how Webp
 ###### Client-side Webpack Configuration for Development
 
 **webpack.config.client.production.js**
+
+###### nodemon
+
+With the bundling configurations in place, we can add configuration for running these generated bundles automatically on code updates during development using Nodemon
+
+This configuration will set up nodemon to watch for changes in the server files during development, then execute compile and build commands as necessary.
