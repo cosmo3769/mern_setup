@@ -214,3 +214,7 @@ The highlighted keys and values in the **config** object will determine how Webp
 ###### Server-side Weback Configuration
 
 **webpack.config.server.js**
+
+###### Client-side Webpack Configuration for Development
+
+**webpack.config.client.production.js**
