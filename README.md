@@ -225,4 +225,8 @@ With the bundling configurations in place, we can add configuration for running 
 
 This configuration will set up nodemon to watch for changes in the server files during development, then execute compile and build commands as necessary.
 
-## Frontend
+## Frontend views with React
+
+In order to start developing a frontend, first create a root template file called **template.js** in the project folder, which will render the HTML with React components. 
+
+When the server receives a request to the root URL, this HTML template will be rendered in the browser, and the div element with ID "root" will contain our React component.
