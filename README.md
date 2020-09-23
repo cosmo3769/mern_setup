@@ -231,4 +231,10 @@ In order to start developing a frontend, first create a root template file calle
 
 When the server receives a request to the root URL, this HTML template will be rendered in the browser, and the div element with ID "root" will contain our React component.
 
-Make two folders
+**client --> main.js & HelloWorld.js**
+
+The **main.js** file simply renders the top-level entry React component in the **div** element in the HTML document. In this case, the entry React component is the HelloWorld component imported from HelloWorld.js.
+
+**HelloWorld.js** contains a basic **HelloWorld** React component, which is hot-exported to enable hot reloading with **react-hot-loader** during development.
+
+To see the React component rendered in the browser when the server receives a request to the root URL, we need to use the Webpack and Babel setup to compile and bundle this code, and also add server-side code that responds to the root route request with the bundled code.
