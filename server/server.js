@@ -1,8 +1,17 @@
-import express from 'express';
-import devBundle from './devBundle';
-import path from 'path';
-const CURRENT_WORKING_DIR = process.cwd();
+import path from 'path'
+import express from 'express'
 
-const app = express();
-devBundle.compile(app);
-app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')));
+import template from './../template'
+//comment out before building for production
+import devBundle from './devBundle'
+
+const app = express()
+//comment out before building for production
+devBundle.compile(app)
+
+const CURRENT_WORKING_DIR = process.cwd()
+app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
+
+app.get('/', (req, res) => {
+  res.status(200).send(template())
+})
