@@ -242,3 +242,60 @@ To see the React component rendered in the browser when the server receives a re
 ## Server with Express and Node
 
 **server --> server.js & devBundle.js**
+
+The **server.js** file will set up the server.
+
+The **devBundle.js** file will help compile the React code using Webpack configurations while in development mode.
+
+Here, we will implement the Node-Express app, which initiates client-side code bundling, starts the server, sets up the path to serve static assets to the client, and renders the
+React view in a template when a GET request is made to the root route.
+
+###### Express app
+
+We will first add code to import the express module in order to initialize an Express app:
+
+```
+import express from 'express';
+const app = express();
+```
+
+###### Bundling React app during development
+
+We will initialize Webpack to compile the client-side code when the server is run. In devBundle.js, we will set up a compile method that takes the Express app and configures it to use the Webpack middleware to compile, bundle, and serve code, as well as enable hot reloading in development mode:
+
+**devBundle.js**
+
+```
+import webpack from 'webpack'
+import webpackMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpackConfig from './../webpack.config.client.js'
+
+const compile = (app) => {
+  if(process.env.NODE_ENV == "development"){
+    const compiler = webpack(webpackConfig)
+    const middleware = webpackMiddleware(compiler, {
+      publicPath: webpackConfig.output.publicPath
+    })
+    app.use(middleware)
+    app.use(webpackHotMiddleware(compiler))
+  }
+}
+
+export default {
+  compile
+}
+```
+
+We will call this compile method in server.js by adding the following lines while in development mode
+
+**server.js**
+
+```
+import devBundle from './devBundle';
+devBundle.compile(app);
+```
+
+These two lines of code should be commented out when building the application code for production, this is only meant for development.
+
+In development mode, when these lines are executed, Webpack will compile and bundle the React code to place it in **dist/bundle.js.**
