@@ -1,6 +1,6 @@
 # mern_setup
 
-In this we will know about the modules: 
+In this we will know about the modules:-
 
 ## Babel modules 
 
